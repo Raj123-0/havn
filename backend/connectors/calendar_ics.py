@@ -1,14 +1,34 @@
-import json
-from typing import Dict, Any, List
+"""Module for mathematical computation and analysis."""
+
 from datetime import datetime
-from icalendar import Calendar
+from typing import Dict, Any, List
+import json
+
 from .base import BaseConnector
+from icalendar import Calendar
+
 
 class CalendarConnector(BaseConnector):
     def name(self) -> str:
+        """Name.
+        
+        Returns:
+            str: Result of type str
+        
+        """
         return "calendar"
         
     def run(self, file_path: str = None, token: str = None, **kwargs) -> Dict[str, List[Dict[str, Any]]]:
+        """Worker function for parallel processing.
+        
+        Args:
+            file_path:
+            token:
+        
+        Returns:
+            dict: Result of type dict
+        
+        """
         if not file_path:
             return {"events": [], "metrics": [], "entities": []}
             

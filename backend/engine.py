@@ -1,9 +1,27 @@
-import pandas as pd
-import numpy as np
+from __future__ import annotations
+"""Module for mathematical computation and analysis."""
+
+
+
 from scipy import stats
 from statsmodels.tsa.stattools import ccf
+import numpy as np
+import pandas as pd
+
 
 def fetch_daily_series(conn, source: str, name: str, is_metric: bool = True):
+    """Retrieve daily series.
+    
+    Args:
+        conn:
+        source:
+        name:
+        is_metric (bool):
+    
+    Returns:
+        The computed result
+    
+    """
     if is_metric:
         query = "SELECT date, avg_value as value FROM daily_metrics WHERE source = ? AND metric_name = ? ORDER BY date"
     else:
@@ -16,7 +34,8 @@ def fetch_daily_series(conn, source: str, name: str, is_metric: bool = True):
         df = df.set_index('date').resample('D').mean().fillna(0)
     return df
 
-def analyze_correlation(df1, df2):
+
+def analyze_correlation(df1, df2) -> dict:
     """
     Analyzes the correlation between two aligned pandas DataFrames.
     Both must have a 'value' column and a DatetimeIndex.
