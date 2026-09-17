@@ -1,6 +1,12 @@
+from __future__ import annotations
+"""Module for mathematical computation and analysis."""
+
+
 from abc import ABC, abstractmethod
 from typing import Dict, Any, List
+
 import uuid
+
 
 class BaseConnector(ABC):
     """
@@ -11,6 +17,9 @@ class BaseConnector(ABC):
 
     @abstractmethod
     def name(self) -> str:
+        """Name.
+        
+        """
         pass
         
     @abstractmethod
@@ -22,5 +31,11 @@ class BaseConnector(ABC):
         """
         pass
         
-    def _generate_id(self, *parts):
+    def _generate_id(self, *parts) -> str:
+        """Create id.
+        
+        Returns:
+            str: Result of type str
+        
+        """
         return str(uuid.uuid5(uuid.NAMESPACE_OID, "_".join(str(p) for p in parts)))
