@@ -1,6 +1,19 @@
+"""Module for mathematical computation and analysis."""
+
+
 import duckdb
 
+
 def init_db(db_path: str = "havn.duckdb"):
+    """Init db.
+    
+    Args:
+        db_path (str):
+    
+    Returns:
+        The computed result
+    
+    """
     conn = duckdb.connect(db_path)
     
     # Create tables
@@ -64,7 +77,17 @@ def init_db(db_path: str = "havn.duckdb"):
     
     return conn
 
+
 def get_connection(db_path: str = "havn.duckdb"):
+    """Retrieve connection.
+    
+    Args:
+        db_path (str):
+    
+    Returns:
+        The computed result
+    
+    """
     return duckdb.connect(db_path)
 
 if __name__ == "__main__":
