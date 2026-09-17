@@ -1,14 +1,34 @@
+"""Module for mathematical computation and analysis."""
+
+from datetime import datetime
+from typing import Dict, Any, List
 import csv
 import json
-from typing import Dict, Any, List
-from datetime import datetime
+
 from .base import BaseConnector
+
 
 class BankCsvConnector(BaseConnector):
     def name(self) -> str:
+        """Name.
+        
+        Returns:
+            str: Result of type str
+        
+        """
         return "csv"
         
     def run(self, file_path: str = None, token: str = None, **kwargs) -> Dict[str, List[Dict[str, Any]]]:
+        """Worker function for parallel processing.
+        
+        Args:
+            file_path:
+            token:
+        
+        Returns:
+            dict: Result of type dict
+        
+        """
         mapping = kwargs.get("mapping", {})
         if not file_path or not mapping:
             return {"events": [], "metrics": [], "entities": []}
